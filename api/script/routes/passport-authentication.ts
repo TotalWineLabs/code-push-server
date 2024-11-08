@@ -45,10 +45,12 @@ export class PassportAuthentication {
 
   private _cookieSessionMiddleware: RequestHandler;
   private _serverUrl: string;
+  private _microsoftTennantId: string;
   private _storageInstance: storage.Storage;
 
   constructor(config: AuthenticationConfig) {
     this._serverUrl = process.env["SERVER_URL"];
+    this._microsoftTennantId = process.env["MICROSOFT_TENANT_ID"] || "common";
 
     // This session is neither encrypted nor signed beyond what is provided by SSL
     // By default, the 'secure' flag will be set if the node process is using SSL
@@ -260,7 +262,7 @@ export class PassportAuthentication {
     );
 
     router.get(
-      "/auth/register/" + providerName, 
+      "/auth/register/" + providerName,
       limiter,
       this._cookieSessionMiddleware,
       (req: Request, res: Response, next: (err?: any) => void): any => {
@@ -488,7 +490,7 @@ export class PassportAuthentication {
       redirectUrl: this.getCallbackUrl(providerName),
       clientID: microsoftClientId,
       clientSecret: microsoftClientSecret,
-      identityMetadata: "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration",
+      identityMetadata: `https://login.microsoftonline.com/${this._microsoftTennantId}/v2.0/.well-known/openid-configuration`,
       responseMode: "query",
       responseType: "code",
       scope: ["email", "profile"],
