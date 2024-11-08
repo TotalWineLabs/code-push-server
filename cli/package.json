@@ -4,7 +4,7 @@
   "description": "Management CLI for the CodePush service",
   "main": "./script/cli.js",
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "postinstall": "npm run build",
     "start": "node ./bin/script/cli.js",
     "build": "tsc",
     "prettier": "prettier --write \"./**/*.ts\"",
