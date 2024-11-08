@@ -1,3 +1,4 @@
+@Library("jenkins-pipeline-templates@DEVOPS-1792-optional-directory")
 def ver = versions.node("20.17.0")
 stagingBuildNode(buildContainer: ver.buildContainer, nodeName: ver.nodeName, containerName: 'node') {
     stage('Checkout') {
@@ -11,5 +12,6 @@ stagingBuildNode(buildContainer: ver.buildContainer, nodeName: ver.nodeName, con
 stage('Deploy Client'){
     publishNodePackage{
         packageDir = 'cli'
+        additionalScript = 'build'
     }
 }
