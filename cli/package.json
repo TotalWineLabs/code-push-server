@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/totalwinelabs/code-push-server"
+    "url": "ssh://git@github.com/totalwinelabs/code-push-server"
   },
   "author": "Microsoft",
   "dependencies": {
