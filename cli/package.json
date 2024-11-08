@@ -11,6 +11,9 @@
     "lint": "npx eslint ./script/**/*.ts",
     "lint:fix": "npx eslint ./script/**/*.ts --fix"
   },
+  "config": {
+    "unsafe-perm":true
+  },
   "bin": {
     "code-push-standalone": "./bin/script/cli.js"
   },
