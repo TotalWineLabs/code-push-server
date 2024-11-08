@@ -10,6 +10,7 @@ stagingBuildNode(buildContainer: ver.buildContainer, nodeName: ver.nodeName, con
 }
 stage('Deploy Client'){
     publishNodePackage{
+        buildDir = 'bin/script'
         packageDir = 'cli'
     }
 }
