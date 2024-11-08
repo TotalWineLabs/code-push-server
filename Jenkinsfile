@@ -21,6 +21,5 @@ stagingBuildNode(buildContainer: ver.buildContainer, nodeName: ver.nodeName, con
             npm build
             npm publish bin/script
         """
-
-
+    }
 }
