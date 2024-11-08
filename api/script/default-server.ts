@@ -66,7 +66,7 @@ export function start(done: (err?: any, server?: express.Express, storage?: Stor
 
       // First, to wrap all requests and catch all exceptions.
       app.use(domain);
-
+      app.set('trust proxy', true);
       // Monkey-patch res.send and res.setHeader to no-op after the first call and prevent "already sent" errors.
       app.use((req: express.Request, res: express.Response, next: (err?: any) => void): any => {
         const originalSend = res.send;
