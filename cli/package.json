@@ -1,9 +1,10 @@
 {
   "name": "@totalwinelabs/code-push-cli",
-  "version": "0.0.1",
+  "version": "0.0.1-twm",
   "description": "Management CLI for the CodePush service",
   "main": "./script/cli.js",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "start": "node ./bin/script/cli.js",
     "build": "tsc",
     "prettier": "prettier --write \"./**/*.ts\"",
