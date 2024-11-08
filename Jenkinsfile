@@ -11,7 +11,9 @@ stagingBuildNode(buildContainer: ver.buildContainer, nodeName: ver.nodeName, con
 }
 stage('Deploy Client'){
     publishNodePackage{
+        nodeVersion = '20.17.0'
         packageDir = 'cli'
         additionalScript = 'build'
+
     }
 }

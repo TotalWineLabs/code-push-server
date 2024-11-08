@@ -45,3 +45,4 @@ JsonStorage.json
 *.pem
 *.key
 *.cnf
+__*
