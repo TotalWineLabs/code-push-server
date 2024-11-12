@@ -922,6 +922,8 @@ export class AzureStorage implements storage.Storage {
           this._tableClient = tableClient;
           this._blobService = blobServiceClient;
         } else {
+          console.log(`History container name ${AzureStorage.HISTORY_BLOB_CONTAINER_NAME}`);
+          console.log("Error setting up Azure storage: " + error.code);
           throw error;
         }
       });
