@@ -868,7 +868,7 @@ export class AzureStorage implements storage.Storage {
 
       const _accountName = accountName ?? process.env.AZURE_STORAGE_ACCOUNT;
       const _accountKey = accountKey ?? process.env.AZURE_STORAGE_ACCESS_KEY;
-      const _blobEndpoint = process.env.BLOB_STORAGE_INTERNET_ROUTING === "true" ? _accountName : _accountName + "-internetrouting";
+      const _blobEndpoint = process.env.BLOB_STORAGE_INTERNET_ROUTING === "true" ? _accountName + "-internetrouting" : _accountName;
 
       const tableStorageCredential = new AzureNamedKeyCredential(_accountName, _accountKey);
       const blobStorageCredential = new StorageSharedKeyCredential(_accountName, _accountKey);
