@@ -868,12 +868,13 @@ export class AzureStorage implements storage.Storage {
 
       const _accountName = accountName ?? process.env.AZURE_STORAGE_ACCOUNT;
       const _accountKey = accountKey ?? process.env.AZURE_STORAGE_ACCESS_KEY;
+      const _blobEndpoint = process.env.BLOB_STORAGE_INTERNET_ROUTING === "true" ? _accountName : _accountName + "-internetrouting";
 
       const tableStorageCredential = new AzureNamedKeyCredential(_accountName, _accountKey);
       const blobStorageCredential = new StorageSharedKeyCredential(_accountName, _accountKey);
 
       const tableServiceUrl = `https://${_accountName}.table.core.windows.net`;
-      const blobServiceUrl = `https://${_accountName}.blob.core.windows.net`;
+      const blobServiceUrl = `https://${_blobEndpoint}.blob.core.windows.net`;
 
       tableServiceClient = new TableServiceClient(tableServiceUrl, tableStorageCredential, {
         retryOptions: {
