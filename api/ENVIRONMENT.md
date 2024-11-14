@@ -30,6 +30,7 @@ To emulate Azure Blob Storage locally. Azurite needs to be installed and running
 
 - `MICROSOFT_CLIENT_ID`
 - `MICROSOFT_CLIENT_SECRET`
+- `MICROSOFT_TENANT_ID`: (Optional) The tenant ID of your Azure AD instance will default to 'common' if not provided.
 
 ## Optional parameters
 
@@ -48,7 +49,8 @@ To enable the Redis caching layer, set:
 - `REDIS_HOST`: The IP address where the Redis server is hosted (e.g.: codepush.redis.cache.windows.net)
 - `REDIS_PORT`: The port which Redis is listening on (usually 6379 for HTTP and 6380 for HTTPS). Note that node_redis does not support HTTPS natively.
 - `REDIS_KEY` (If authentication is enabled for Redis): The key used to authenticate requests to the Redis cache.
-
+- `REDIS_TLS_DISABLED`: Set to 'true' to disable TLS for Redis connections. This is useful when connecting to a local Redis server.
+- 
 ### Unit testing
 To perform the unit tests against Azure storage:
 
